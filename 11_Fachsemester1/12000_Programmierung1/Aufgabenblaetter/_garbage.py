@@ -1,29 +1,23 @@
-#i = 1
-#zahl = 0.0
-#zahlstr = str()
-#ende = 250000     #206619
-#
-#
-#while True:
-#    zahl = zahl + 1/(i**3)
-#    i += 1
-#    zahlstr = str(zahl)
-#
-#    if i >= 40:
-#        print(round(zahl, 10))
-i = 1
-zahl = 0.0
-ende = 250000     #206619
-zahl_vgl = 0
-i2 = 0
-while True:
+#3.1 b)
+from decimal import Decimal
+from math import sqrt
+nachkomma = 10
+vergleiche_mit_pi = 15_000_000
+
+def pi_calc(nachkomma, vergleiche_mit_pi):
+    i = 1
+    i2 = 0
+    pi_vgl = Decimal(0)
+    pi_org = Decimal(0)
+    while True:
+        pi_vgl = round(pi_org, nachkomma)
+        pi_org = pi_org + Decimal(1) / Decimal(i**2)
+        i += 1
+        if pi_vgl == round(pi_org, nachkomma):
+            i2 += 1
+            if i2 == vergleiche_mit_pi:
+                return Decimal(sqrt(pi_org * Decimal(6)))
 
 
-    zahl = zahl + 1/(i**3)
-    i += 1
-    
-    if round(zahl, 10) == zahl_vgl:
-        i2 += 1
-        if i2 == 10:
-            print(round(zahl, 10))
-    zahl_vgl = round(zahl, 10)
+print(pi_calc(nachkomma, vergleiche_mit_pi))
+#Mehr als 6 oder 7 korrekte Nachkommastellen sind kaum in absehbarer Zeit möglich (+/- 30 Sekunden)
