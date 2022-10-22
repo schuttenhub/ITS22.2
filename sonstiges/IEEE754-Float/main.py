@@ -50,7 +50,7 @@ def Decimal_DecPInBinary(decimal_DecP):
 
 def normalize_binary(before_norm):
     '''Input: Binäre Float Zahl - Output: Normalisierte FLoat Zahl im Tupel mit Exponent'''
-    replace_dot = 0
+    replace_dot = 1
     output_liste = list(before_norm)
     DotPosition = output_liste.index(".")
     if output_liste[0] == '1':
