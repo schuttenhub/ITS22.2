@@ -7,13 +7,20 @@ def decimal_input():
         return abs(decimal)
     else:
         vorzeichen = 0
-        return decimal
+        return decimal,vorzeichen
 
-decimal_str = str(decimal_input())
+decimal_input_tuple = decimal_input()
+decimal_str = str(decimal_input_tuple[0])
 decimal_Ganz = int(decimal_str[:decimal_str.index(".")])
 decimal_DecP = int(decimal_str[decimal_str.index(".")+1:])
+vorzeichen = int(decimal_input_tuple[1])
 
 ieee = int(0)
+
+
+binary_Ganz = str()
+binary_DecP = str()
+before_norm = str()
 
 def Decimal_GanzInBinary(decimal_Ganz):
     binary_Ganz = str()
@@ -39,27 +46,30 @@ def Decimal_DecPInBinary(decimal_DecP):
             binary_DecP += "0"
     return binary_DecP
 
+def normalize_binary(before_norm):
+    output_liste = list(before_norm)
+    DotPosition = output_liste.index(".")
+    output_liste.insert(1, output_liste.pop(output_liste.index(".")))
+    return_value = ''.join(output_liste)
+    return return_value,(DotPosition - 1)
+
+def Character(before_IEEE):
+    '''input Exponent'''
+    character = int(before_IEEE[1]) + 127
+    characterstr = str()
+    while character > 0:
+        characterstr += str(int(character % 2))
+        character = character // 2
+    characterstr = characterstr[::-1]
+    return characterstr
+
+    
+
+
+
 binary_Ganz = Decimal_GanzInBinary(decimal_Ganz)
 binary_DecP = Decimal_DecPInBinary(decimal_DecP)
-output_before_IEEE = "{}.{}".format(binary_Ganz,binary_DecP)
+before_norm = "{}.{}".format(binary_Ganz,binary_DecP)
 
-print(output_before_IEEE)
-
-#def BinaryInIEEE(vorzeichen, binary_Ganz, binary_DecP,output_before_IEEE):
-#    vorzeichen = 0
-#    ieee = 0
-#    ieeestr = ()
-#    if decimal == 0:
-#        ieee = 00000000000000000000000000000000
-#        return ieee
-#    if decimal > 0:
-#        vorzeichen = 0
-#    else:
-#        vorzeichen = 1
-#    
-#    while True:
-#    pass
-#
-
-
-
+before_IEEE = normalize_binary(before_norm)
+print(before_IEEE)
