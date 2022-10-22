@@ -1,5 +1,6 @@
-#Umrechner von Dezimalzahlen in IEEE 754 Standard
+#Eingabe Tastatur + Dezimalzahl mit Vorzeichenbit
 def decimal_input():
+    '''Input: Eingabe - Output: Tupel mit Float Dezimalzahl(0) + Vorzeichen(1) (- = 1, + = 0)'''
     decimal = float(input("Gib eine reelle Zahl ein: "))
 
     if str(decimal)[0] == "-":
@@ -9,6 +10,7 @@ def decimal_input():
         vorzeichen = 0
         return decimal,vorzeichen
 
+###### Variablen definieren
 decimal_input_tuple = decimal_input()
 decimal_str = str(decimal_input_tuple[0])
 decimal_Ganz = int(decimal_str[:decimal_str.index(".")])
@@ -22,7 +24,9 @@ after_norm = tuple()
 character = str()
 IEEE754var = str()
 
+######Funktionen definieren
 def Decimal_GanzInBinary(decimal_Ganz):
+    '''Input dezimale Ganzzahl -> Output: binäre Ganzzahl'''
     binary_Ganz = str()
     if decimal_Ganz == 0:
         binary_Ganz = '0'
@@ -33,6 +37,7 @@ def Decimal_GanzInBinary(decimal_Ganz):
     return binary_Ganz
 
 def Decimal_DecPInBinary(decimal_DecP):
+    '''Input: dezimale Nachkommastellen -> Output: binäre Nachkommastellen'''
     decimal_DecP = float(str("0.") + str(decimal_DecP))
     binary_DecP = str()
     while len(str(binary_DecP)) <= 42:
@@ -49,7 +54,7 @@ def Decimal_DecPInBinary(decimal_DecP):
     return binary_DecP
 
 def normalize_binary(before_norm):
-    '''Input: Binäre Float Zahl - Output: Normalisierte FLoat Zahl im Tupel mit Exponent'''
+    '''Input: Binäre Float Zahl - Output: Tupel mit normalisierter fLoat Zahl(0) + Exponent(1)'''
     replace_dot = 1
     output_liste = list(before_norm)
     DotPosition = output_liste.index(".")
@@ -67,7 +72,7 @@ def normalize_binary(before_norm):
                 return return_value,(DotPosition - replace_dot)
     
 def Character(after_norm):
-    '''input Exponent - Output Character in Binärform'''
+    '''input: Exponent -> Output: Character in Binärform'''
     character = int(after_norm[1]) + 127
     characterstr = str()
     while character > 0:
@@ -79,6 +84,7 @@ def Character(after_norm):
     return characterstr
 
 def IEEE754(vorzeichen,character,after_norm):
+    '''Input: Alle anderen Ergebnisse -> Output: IEEE-754 konforme Binärzahl'''
     vorzeichen = str(vorzeichen)
     IEEEstr = str(vorzeichen)
     IEEEstr = IEEEstr + str(character)
@@ -88,6 +94,7 @@ def IEEE754(vorzeichen,character,after_norm):
     return IEEEstr[:32]
 
 
+###### Variablen mit Werten füttern
 binary_Ganz = Decimal_GanzInBinary(decimal_Ganz)
 binary_DecP = Decimal_DecPInBinary(decimal_DecP)
 before_norm = "{}.{}".format(binary_Ganz,binary_DecP)
@@ -95,6 +102,8 @@ after_norm = normalize_binary(before_norm)
 character = Character(after_norm)
 IEEE754var = IEEE754(vorzeichen,character,after_norm)
 
+
+###### Output der Ergebnisse
 print("\n")
 print(before_norm, "Float Darstellung")
 print(after_norm[0], "Normalisierte Darstellung")
