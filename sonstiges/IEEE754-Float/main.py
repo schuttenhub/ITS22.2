@@ -12,11 +12,11 @@ def decimal_input():
 
 ###### Variablen definieren
 decimal_input_tuple = decimal_input()
+vorzeichen = int(decimal_input_tuple[1])
 decimal_str = str(decimal_input_tuple[0])
 decimal_Ganz = int(decimal_str[:decimal_str.index(".")])
-decimal_DecP = str(decimal_str[decimal_str.index(".")+1:])
-vorzeichen = int(decimal_input_tuple[1])
-ieee = int(0)
+decimal_DecP = str(decimal_str[decimal_str.index(".") + 1:])
+
 binary_Ganz = str()
 binary_DecP = str()
 before_norm = str()
@@ -41,6 +41,8 @@ def Decimal_DecPInBinary(decimal_DecP):
     decimal_DecP = float(str("0.") + str(decimal_DecP))
     binary_DecP = str()
     while len(str(binary_DecP)) <= 42:
+        if (decimal_DecP) == 0.0:
+            return '0000000000000000000000000000000'
         if (decimal_DecP * 2) == 1.0:
             binary_DecP += "1"
             return binary_DecP
@@ -55,6 +57,8 @@ def Decimal_DecPInBinary(decimal_DecP):
 
 def normalize_binary(before_norm):
     '''Input: Binäre Float Zahl - Output: Tupel mit normalisierter fLoat Zahl(0) + Exponent(1)'''
+    if before_norm <= '0.0000000000000000000000000000000':
+        return before_norm, 0
     replace_dot = 1
     output_liste = list(before_norm)
     DotPosition = output_liste.index(".")
@@ -105,8 +109,9 @@ IEEE754var = IEEE754(vorzeichen,character,after_norm)
 
 ###### Output der Ergebnisse
 print("\n")
-print(before_norm, "Float Darstellung")
-print(after_norm[0], "Normalisierte Darstellung")
-print("V<char--><----Mantisse--------->")
+print(before_norm[:32], "Float Darstellung")
+print(str(after_norm[0])[:32], "Normalisierte Darstellung")
+print(after_norm[1], "Exponent")
+print("V<-char-><------Mantisse------->")
 print(IEEE754var, "IEEE-754 Standard Darstellung")
 print("\n")
