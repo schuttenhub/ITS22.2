@@ -97,7 +97,6 @@ def IEEE754(vorzeichen,character,after_norm):
     IEEEstr = IEEEstr + after_norm
     return IEEEstr[:32]
 
-
 ###### Variablen mit Werten füttern
 binary_Ganz = Decimal_GanzInBinary(decimal_Ganz)
 binary_DecP = Decimal_DecPInBinary(decimal_DecP)
@@ -105,7 +104,6 @@ before_norm = "{}.{}".format(binary_Ganz,binary_DecP)
 after_norm = normalize_binary(before_norm)
 character = Character(after_norm)
 IEEE754var = IEEE754(vorzeichen,character,after_norm)
-
 
 ###### Output der Ergebnisse
 print("\n")
