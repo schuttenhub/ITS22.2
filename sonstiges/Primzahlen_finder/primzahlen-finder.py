@@ -1,11 +1,20 @@
-"""counter = 1
-rest = 0
-print ("Bis zu welcher Zahl sollen Primzahlen errechnet werden?")
-maxzahl = int(input())"""
+#Primzahlen Finder
+
+prim_max = 100
 
 
-#check ob Zahl durch alle Zahlen zwischen 1 und sich selbst restlos teilbar ist
-#schleife zum hochzählen bis maxzahl
 
-5 + 2
-#yo
+def prim_finder(prim_max):
+    primzahl = 0
+    while primzahl <= prim_max:
+#        for i in range((primzahl//2)):
+#            i += 1
+#            if primzahl % i == 0:
+#                print(primzahl)
+#        primzahl += 1            
+
+
+
+
+
+prim_finder(prim_max)
