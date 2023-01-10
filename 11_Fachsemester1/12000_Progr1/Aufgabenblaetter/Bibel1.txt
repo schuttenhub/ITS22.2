@@ -1,3 +1,4 @@
+ErsteZeileohneLeerzeichen
 Am Anfang schuf Gott Himmel und Erde.
 Und die Erde war wüst und leer, und es war finsterauf der Tiefe; und der Geist Gottes schwebte auf dem Wasser.
 Und Gott sprach Es werde Licht! und es ward Licht
@@ -27037,3 +27038,4 @@ Und saufet euch nicht voll Wein, daraus ein unordentlich Wesen folgt, sondern we
 redet untereinander in Psalmen und Lobgesängen und geistlichen Liedern, singet und spielet dem Herrn in eurem Herzen
 und saget Dank allezeit für alles Gott und dem Vater in dem Namen unsres Herrn Jesu Christi,
 Wer überwindet, den will ich machen zum Pfeiler in dem Tempel meines Gottes, und er soll nicht mehr hinausgehen; und will auf ihn schreiben den Namen meines Gottes und den Namen des neuen Jerusalem, der Stadt meines Gottes, die vom Himmel herniederkommt von meinem Gott, und meinen Namen, den neuen.
+AmEndenocheineZeileohneLeerzeichen
